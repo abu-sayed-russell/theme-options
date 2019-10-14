@@ -69,6 +69,8 @@ $get_menus   = get_menus( 1 );
                       <option value="checkbox" <?php if ( $field_by_id['type'] === "checkbox" ): ?> selected<?php endif ?>>Checkbox</option>
                       <option value="multicheck" <?php if ( $field_by_id['type'] === "multicheck" ): ?> selected<?php endif ?>>Multicheck</option>
                       <option value="color" <?php if ( $field_by_id['type'] === "color" ): ?> selected<?php endif ?>>Color</option>
+                      <option value="backup" <?php if ( $field_by_id['type'] === "backup" ): ?> selected<?php endif ?>>Backup</option>
+                      <option value="transfer" <?php if ( $field_by_id['type'] === "transfer" ): ?> selected<?php endif ?>>Transfer Backup</option>
                       <option value="select_google_font" <?php if ( $field_by_id['type'] === "select_google_font" ): ?> selected<?php endif ?>>Google Font</option>
                       <option value="typography" <?php if ( $field_by_id['type'] === "typography" ): ?> selected<?php endif ?>>Typography</option>
                       <option value="border" <?php if ( $field_by_id['type'] === "border" ): ?> selected<?php endif ?>>Border</option>
