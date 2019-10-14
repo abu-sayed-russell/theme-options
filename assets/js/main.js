@@ -18,6 +18,8 @@ jQuery(function () {
           $('#select_options').fadeIn();
         }else if ( $(this).val() === 'custom_taxonomy' ) {
           $('#custom_taxonomy').fadeIn();
+        }else if ( $(this).val() === 'info' ) {
+          $('#custom_info').fadeIn();
         }else{
             $('#select_options').fadeOut();
         }

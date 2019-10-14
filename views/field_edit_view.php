@@ -58,6 +58,7 @@ $get_menus   = get_menus( 1 );
                   <div class="col-sm-10">
                     <select name="field_type" id="field_type" class="form-control" required>
                       <option value="">Select Type</option>
+                      <option value="info" <?php if ( $field_by_id['type'] === "info" ): ?> selected<?php endif ?>>Info</option>
                       <option value="text" <?php if ( $field_by_id['type'] === "text" ): ?> selected<?php endif ?>>Text</option>
                       <option value="textarea" <?php if ( $field_by_id['type'] === "textarea" ): ?> selected<?php endif ?>>Textarea</option>
                       <option value="select" <?php if ( $field_by_id['type'] === "select" ): ?> selected<?php endif ?>>Select</option>
@@ -69,14 +70,11 @@ $get_menus   = get_menus( 1 );
                       <option value="checkbox" <?php if ( $field_by_id['type'] === "checkbox" ): ?> selected<?php endif ?>>Checkbox</option>
                       <option value="multicheck" <?php if ( $field_by_id['type'] === "multicheck" ): ?> selected<?php endif ?>>Multicheck</option>
                       <option value="color" <?php if ( $field_by_id['type'] === "color" ): ?> selected<?php endif ?>>Color</option>
-                      <option value="backup" <?php if ( $field_by_id['type'] === "backup" ): ?> selected<?php endif ?>>Backup</option>
-                      <option value="transfer" <?php if ( $field_by_id['type'] === "transfer" ): ?> selected<?php endif ?>>Transfer Backup</option>
                       <option value="select_google_font" <?php if ( $field_by_id['type'] === "select_google_font" ): ?> selected<?php endif ?>>Google Font</option>
                       <option value="typography" <?php if ( $field_by_id['type'] === "typography" ): ?> selected<?php endif ?>>Typography</option>
                       <option value="border" <?php if ( $field_by_id['type'] === "border" ): ?> selected<?php endif ?>>Border</option>
                       <option value="images" <?php if ( $field_by_id['type'] === "images" ): ?> selected<?php endif ?>>Images</option>
-                      <option value="colorchooser" <?php if ( $field_by_id['name'] === "colorchooser" ): ?> selected<?php endif ?>>Colorchooser</option>
-                      <option value="info" <?php if ( $field_by_id['type'] === "info" ): ?> selected<?php endif ?>>Info</option>
+                      <option value="colorchooser" <?php if ( $field_by_id['name'] === "colorchooser" ): ?> selected<?php endif ?>>Color Chooser</option>
                       <option value="slider" <?php if ( $field_by_id['type'] === "slider" ): ?> selected<?php endif ?>>Slider</option>
                       <option value="custom_fonts" <?php if ( $field_by_id['type'] === "custom_fonts" ): ?> selected<?php endif ?>>Custom Fonts</option>
                       <option value="sorter" <?php if ( $field_by_id['type'] === "sorter" ): ?> selected<?php endif ?>>Sorter</option>
@@ -111,12 +109,20 @@ $get_menus   = get_menus( 1 );
 				  <?php endif ?>
 				  <?php if ( isset( $field_by_id['other'] ) && ! empty( $field_by_id['other'] ) ): ?>
                     <div class="form-group" id="custom_taxonomy">
-                      <label for="title" class="col-sm-2"></label>
+                      <label for="custom_taxonomy_name" class="col-sm-2"></label>
                       <div class="col-sm-10">
                         <input type="text" name="custom_taxonomy_name" id="custom_taxonomy_name" class="form-control" placeholder="Enter Taxonomy Name" value="<?php echo $field_by_id['other']; ?>">
                       </div>
                     </div>
 				  <?php endif ?>
+	              <?php if ( isset( $field_by_id['info'] ) && ! empty( $field_by_id['info'] ) ): ?>
+                  <div class="form-group" id="custom_info">
+                    <label for="custom_information" class="col-sm-2"></label>
+                    <div class="col-sm-10">
+                      <textarea name="custom_information" id="custom_information" class="form-control" placeholder="Enter Introduction of Field Section"><?php echo $field_by_id['info']; ?></textarea>
+                    </div>
+                  </div>
+				      <?php endif ?>
                 <div class="form-group">
                   <label for="menu_id" class="col-sm-2">Choose Menu</label>
                   <div class="col-sm-10">
