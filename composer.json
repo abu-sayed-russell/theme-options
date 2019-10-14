@@ -1,0 +1,19 @@
+{
+    "name": "getweb/theme-options",
+    "description": "Awesome Theme Options Plugin",
+    "type": "Theme Options",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Abu Sayed Russell",
+            "email": "abusayedrussell@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Getweb\\": "./inc"
+        }
+    }
+}

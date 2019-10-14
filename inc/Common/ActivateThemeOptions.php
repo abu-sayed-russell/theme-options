@@ -1,0 +1,1 @@
+<?php/** * @package  getwebThemeOption */namespace Getweb\Common;class ActivateThemeOptions {	public static function ActivateThemeOptionsFlash() {		flush_rewrite_rules();	}}
