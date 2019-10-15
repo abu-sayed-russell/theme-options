@@ -76,8 +76,6 @@ $get_menus   = get_menus( 1 );
                       <option value="images" <?php if ( $field_by_id['type'] === "images" ): ?> selected<?php endif ?>>Images</option>
                       <option value="colorchooser" <?php if ( $field_by_id['name'] === "colorchooser" ): ?> selected<?php endif ?>>Color Chooser</option>
                       <option value="slider" <?php if ( $field_by_id['type'] === "slider" ): ?> selected<?php endif ?>>Slider</option>
-                      <option value="custom_fonts" <?php if ( $field_by_id['type'] === "custom_fonts" ): ?> selected<?php endif ?>>Custom Fonts</option>
-                      <option value="sorter" <?php if ( $field_by_id['type'] === "sorter" ): ?> selected<?php endif ?>>Sorter</option>
                       <option value="upload" <?php if ( $field_by_id['type'] === "upload" ): ?> selected<?php endif ?>>upload</option>
                       <option value="media" <?php if ( $field_by_id['type'] === "media" ): ?> selected<?php endif ?>>Media</option>
                     </select>
