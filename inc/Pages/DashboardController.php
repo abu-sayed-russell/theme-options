@@ -36,7 +36,7 @@ class DashboardController extends BaseController
 				'capability' => 'manage_options', 
 				'menu_slug' => 'getweb_theme_options',
 				'callback' => array( $this->callbacks, 'adminDashboard' ), 
-				'icon_url' => 'dashicons-tickets', 
+				'icon_url' => 'dashicons-screenoptions',
 				'position' => 110
 			)
 		);
