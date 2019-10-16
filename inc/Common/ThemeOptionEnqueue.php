@@ -65,6 +65,7 @@ class ThemeOptionEnqueue extends BaseController {
 			wp_enqueue_script( 'tipsy', $this->plugin_url . 'assets/options/js/jquery.tipsy.js', array( 'jquery' ) );
 			wp_enqueue_script( 'cookie', $this->plugin_url . 'assets/options/js/cookie.js', 'jquery' );
 			wp_enqueue_script( 'getweb', $this->plugin_url . 'assets/options/js/getweb.js', array( 'jquery' ) );
+			wp_enqueue_script( 'options-ajax', $this->plugin_url . 'assets/options/js/options-ajax.js', array( 'jquery' ) );
 
 
 			// Enqueue colorpicker scripts for versions below 3.5 for compatibility

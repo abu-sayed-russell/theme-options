@@ -21,6 +21,23 @@
             </div>
           </div>
           <div class="form-group">
+            <label for="parent" class="col-sm-2">Parent of</label>
+            <div class="col-sm-10">
+              <select name="parent" id="parent" class="form-control">
+		          <?php $get_menus = get_menus( 1,0 ); ?>
+		          <?php if ( isset( $get_menus ) && count( $get_menus ) > 0 ): ?>
+                    <option value="0">Parent</option>
+			          <?php foreach ( $get_menus as $menu ): ?>
+                      <option value="<?php echo $menu->id; ?>"><?php echo $menu->name; ?></option>
+			          <?php endforeach ?>
+		          <?php else : ?>
+                    <option value="">Creating Menu First</option>
+		          <?php endif ?>
+              </select>
+              <small class="text-danger form-control-msg">Choose visibility</small>
+            </div>
+          </div>
+          <div class="form-group">
             <label for="status" class="col-sm-2">Visibility</label>
             <div class="col-sm-10">
               <select name="status" id="status" class="form-control">

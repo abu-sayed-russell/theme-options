@@ -1,9 +1,4 @@
-/**
- * AJAX Upload
- * Project page - http://valums.com/ajax-upload/
- * Copyright (c) 2008 Andris Valums, http://valums.com
- * Licensed under the MIT license (http://valums.com/mit-license/)
- */
+
 (function(){
 	
 var d = document, w = window;
@@ -30,7 +25,6 @@ function addEvent(el, type, fn){
 		el.attachEvent('on' + type, f)
 	}
 }
-
 
 /**
  * Creates and returns element from html chunk

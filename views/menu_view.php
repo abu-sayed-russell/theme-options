@@ -1,7 +1,4 @@
-<?php
-
-$get_menus = get_menus(-1);
-?>
+<?php $get_menus = get_menus(-1,-1); ?>
 <div class="container mrt50">
   <div class="panel panel-border">
     <div class="clearfix panel-custom-color">
@@ -26,27 +23,27 @@ $get_menus = get_menus(-1);
         </tr>
         </thead>
         <tbody>
-		<?php if (isset($get_menus) && count($get_menus) > 0): ?>
-			<?php $i=1; foreach ($get_menus as $row): ?>
-            <tr data-del="<?php echo $row['id'] ; ?>">
+        <?php if (isset($get_menus) && count($get_menus) > 0): ?>
+	        <?php $i=1; foreach ($get_menus as $row): ?>
+            <tr data-del="<?php echo $row->id ; ?>">
               <td><?php echo $i++ ; ?></td>
-              <td><?php echo $row['name'] ; ?></td>
+              <td><?php echo $row->name ; ?></td>
               <td>
-				  <?php if (!empty($row['status'] == 1)): ?>
+			      <?php if (!empty($row->status == 1)): ?>
                     <button type="button" class="btn btn-primary btn-sm " disabled>Visible</button>
-				  <?php else: ?>
+			      <?php else: ?>
                     <button type="button" class="btn btn-danger btn-sm " disabled>Unvisible</button>
-				  <?php endif ?>
+			      <?php endif ?>
 
               </td>
-              <td><?php echo create_before($row['created_at']) ; ?></td>
+              <td><?php echo create_before($row->created_at) ; ?></td>
               <td>
-                <a href="admin.php?page=getweb_edit_menu&edit-id=<?php echo $row['id'] ; ?>" class="btn btn-primary" data-id="<?php echo $row['id'] ; ?>">Edit</a>
-                <a class="btn btn-danger deletegetweb" href="javascript:void(0)" data-id="<?php echo $row['id'] ; ?>">Delete</a>
+                <a href="admin.php?page=getweb_edit_menu&edit-id=<?php echo $row->id ; ?>" class="btn btn-primary" data-id="<?php echo $row->id ; ?>">Edit</a>
+                <a class="btn btn-danger deletegetweb" href="javascript:void(0)" data-id="<?php echo $row->id ; ?>">Delete</a>
               </td>
             </tr>
-			<?php endforeach ?>
-		<?php endif ?>
+	        <?php endforeach ?>
+        <?php endif ?>
         </tbody>
       </table>
     </div>

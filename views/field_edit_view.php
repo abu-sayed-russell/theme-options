@@ -3,7 +3,7 @@ global $wpdb;
 $edit_id = isset( $_GET['edit-id'] ) ? intval( $_GET['edit-id'] ) : 0;
 global $wpdb;
 $field_by_id = get_fileds_id( $edit_id );
-$get_menus   = get_menus( 1 );
+$get_menus   = get_menus( 2,'' );
 ?>
 <div class="container-fluid mrt50">
   <div class="panel panel-border">
@@ -128,7 +128,7 @@ $get_menus   = get_menus( 1 );
 						<?php if ( isset( $get_menus ) && count( $get_menus ) > 0 ): ?>
                           <option value="">Select Place</option>
 							<?php foreach ( $get_menus as $menu ): ?>
-                            <option value="<?php echo $menu['id']; ?>" <?php if ( $field_by_id['menu_id'] === $menu['id'] ): ?> selected<?php endif ?>><?php echo $menu['name']; ?></option>
+                            <option value="<?php echo $menu->id; ?>" <?php if ( $field_by_id['menu_id'] === $menu->id ): ?> selected<?php endif ?>><?php echo $menu['name']; ?></option>
 							<?php endforeach ?>
 						<?php else : ?>
                           <option value="">Creating Menu First</option>
