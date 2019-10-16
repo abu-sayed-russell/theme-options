@@ -323,13 +323,11 @@ jQuery(document).ready(function($){
 			opacity: 0.6,
 			update: function() {
 				$(this).find('.position').each( function() {
-
 					var listID = $(this).parent().attr('id');
 					var parentID = $(this).parent().parent().attr('id');
 					parentID = parentID.replace(id + '_', '')
 					var optionID = $(this).parent().parent().parent().attr('id');
 					$(this).prop("name", optionID + '[' + parentID + '][' + listID + ']');
-
 				});
 			}
 		});
@@ -351,7 +349,7 @@ jQuery(document).ready(function($){
 	 * Feature added by : Smartik - http://smartik.ws/
 	 * Date 			 : 03.17.2013
 	 */
-	jQuery('.smof_sliderui').each(function() {
+	jQuery('.gtof_sliderui').each(function() {
 
 		var obj   = jQuery(this);
 		var sId   = "#" + obj.data('id');
