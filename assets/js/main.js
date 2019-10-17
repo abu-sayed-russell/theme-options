@@ -20,8 +20,13 @@ jQuery(function () {
           $('#custom_taxonomy').fadeIn();
         }else if ( $(this).val() === 'info' ) {
           $('#custom_info').fadeIn();
+        }else if ( $(this).val() === 'images' ) {
+          $('#select_images').fadeIn();
         }else{
             $('#select_options').fadeOut();
+            $('#select_images').fadeOut();
+            $('#custom_info').fadeOut();
+            $('#custom_taxonomy').fadeOut();
         }
     });
     jQuery('.add_more').click(function(){
@@ -34,9 +39,27 @@ jQuery(function () {
             jQuery(this).parent().parent().remove();
         });
     });
-
     jQuery('.remove').click(function(){
         jQuery(this).parent().parent().remove();
+    });
+
+    jQuery("#option_images_button").on("click",function () {
+        var images = wp.media({
+            title: 'Upload Image',
+            library: {type: 'image'},
+            multiple: true,
+        }).open().on("select", function(e){
+            var uploadImages = images.state().get("selection");
+            var getImage = uploadImages.toJSON();
+            $(getImage).each(function (key,image) {
+                jQuery('#append_multiple_images').append('<div class="image_box">'+
+                  '<input type="hidden" name="option_images[]" value="'+image.url+'" />'+
+                  '<img src="'+image.url+'" height="100px;" /><br>'+
+                  '<a title="Remove Image" onclick="jQuery(this).parent().remove();">Remove Image</a>'+
+                  '</div>');
+            });
+
+        });
     });
 });
 

@@ -3,7 +3,7 @@ global $wpdb;
 $edit_id = isset( $_GET['edit-id'] ) ? intval( $_GET['edit-id'] ) : 0;
 global $wpdb;
 $field_by_id = get_fileds_id( $edit_id );
-$get_menus   = get_menus( 2,'' );
+$get_menus   = get_menus( 2, '' );
 ?>
 <div class="container-fluid mrt50">
   <div class="panel panel-border">
@@ -18,7 +18,7 @@ $get_menus   = get_menus( 2,'' );
       <div class="panel-heading pull-right"><a href="admin.php?page=getweb_option_fileds" class="btn btn-color">Back</a></div>
     </div>
     <div class="panel-body">
-        <form id="frmeditgetwebfield" class="form-horizontal" action="#" method="post" data-url="<?php echo admin_url('admin-ajax.php'); ?>">
+      <form id="frmeditgetwebfield" class="form-horizontal" action="#" method="post" data-url="<?php echo admin_url( 'admin-ajax.php' ); ?>">
         <input type="hidden" name="edit_field" value="<?php echo isset( $_GET['edit-id'] ) ? intval( $_GET['edit-id'] ) : 0; ?>">
         <div class="row">
           <div class="col-sm-9">
@@ -83,7 +83,7 @@ $get_menus   = get_menus( 2,'' );
                     <small class="text-danger form-control-msg">Please select at least one type!</small>
                   </div>
                 </div>
-				  <?php if ( isset( $field_by_id['more_values'] ) && !empty( $field_by_id['more_values'] ) && $field_by_id['more_values'] != 'null' ): ?>
+				  <?php if ( isset( $field_by_id['more_values'] ) && ! empty( $field_by_id['more_values'] ) && $field_by_id['more_values'] != 'null' && $field_by_id['type'] == 'select' || $field_by_id['type'] == 'multi_select' || $field_by_id['type'] == 'radio' || $field_by_id['type'] == 'multicheck' ): ?>
                     <div class="form-group" id="select_options">
                       <label for="field_type" class="col-sm-2"></label>
                       <div class="col-sm-10">
@@ -113,14 +113,34 @@ $get_menus   = get_menus( 2,'' );
                       </div>
                     </div>
 				  <?php endif ?>
-	              <?php if ( isset( $field_by_id['info'] ) && ! empty( $field_by_id['info'] ) ): ?>
-                  <div class="form-group" id="custom_info">
-                    <label for="custom_information" class="col-sm-2"></label>
-                    <div class="col-sm-10">
-                      <textarea name="custom_information" id="custom_information" class="form-control" placeholder="Enter Introduction of Field Section"><?php echo $field_by_id['info']; ?></textarea>
+				  <?php if ( isset( $field_by_id['info'] ) && ! empty( $field_by_id['info'] ) ): ?>
+                    <div class="form-group" id="custom_info">
+                      <label for="custom_information" class="col-sm-2"></label>
+                      <div class="col-sm-10">
+                        <textarea name="custom_information" id="custom_information" class="form-control" placeholder="Enter Introduction of Field Section"><?php echo $field_by_id['info']; ?></textarea>
+                      </div>
                     </div>
-                  </div>
-				      <?php endif ?>
+				  <?php endif ?>
+				  <?php if ( isset( $field_by_id['more_values'] ) && ! empty( $field_by_id['more_values'] ) && $field_by_id['type'] == 'images' && $field_by_id['more_values'] != 'null' ): ?>
+                    <div class="form-group" id="select_images">
+                      <label for="option_images" class="col-sm-2"></label>
+                      <div class="col-sm-10">
+                        <input type="button" id="option_images_button" value="Upload Image">
+                        <span id="append_multiple_images">
+                          <?php
+                          $more_images = json_decode( $field_by_id['more_values'] );
+                          foreach ( $more_images as $key => $option ): ?>
+                            <div class="image_box">
+                        <input type="hidden" name="option_images[]" value="<?php echo $option->image; ?>"/>
+                        <img src="<?php echo $option->image; ?>" height="100px;"/><br>
+                        <a title="Remove Image" onclick="jQuery(this).parent().remove();">Remove Image</a>
+                        </div>
+                          <?php endforeach ?>
+
+                      </span>
+                      </div>
+                    </div>
+				  <?php endif ?>
                 <div class="form-group">
                   <label for="menu_id" class="col-sm-2">Choose Menu</label>
                   <div class="col-sm-10">
@@ -128,7 +148,7 @@ $get_menus   = get_menus( 2,'' );
 						<?php if ( isset( $get_menus ) && count( $get_menus ) > 0 ): ?>
                           <option value="">Select Place</option>
 							<?php foreach ( $get_menus as $menu ): ?>
-                            <option value="<?php echo $menu->id; ?>" <?php if ( $field_by_id['menu_id'] === $menu->id ): ?> selected<?php endif ?>><?php echo $menu['name']; ?></option>
+                            <option value="<?php echo $menu->id; ?>" <?php if ( $field_by_id['menu_id'] === $menu->id ): ?> selected<?php endif ?>><?php echo $menu->name; ?></option>
 							<?php endforeach ?>
 						<?php else : ?>
                           <option value="">Creating Menu First</option>

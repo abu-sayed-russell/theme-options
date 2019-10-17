@@ -28,12 +28,10 @@ class ThemeOptionEnqueue extends BaseController {
 			//Jquery
 			wp_enqueue_script( 'jquery' );
 			wp_enqueue_script( "getweb-options-js", $this->plugin_url . 'assets/js/jquery.min.js', '', GETWEB_OPTION_VERSION, true );
-			wp_enqueue_script( "getweb-options-validation", $this->plugin_url . 'assets/js/jquery.validate.min.js', '', GETWEB_OPTION_VERSION, true );
 			wp_enqueue_script( "getweb-options-bootstrap-js", $this->plugin_url . 'assets/js/bootstrap.min.js', '', GETWEB_OPTION_VERSION, true );
 			wp_enqueue_script( "getweb-options-datatables", $this->plugin_url . 'assets/js/datatables.min.js', '', GETWEB_OPTION_VERSION, true );
-			wp_enqueue_script( "getweb-options-jquery-ui", $this->plugin_url . 'assets/js/jquery-ui.js', '', GETWEB_OPTION_VERSION, true );
 			wp_enqueue_script( "getweb-options-main-js", $this->plugin_url . 'assets/js/main.js', '', GETWEB_OPTION_VERSION, true );
-
+			wp_enqueue_media();
 		}
 		if ( in_array( $currentPage, $menu_page ) ) {
 			wp_enqueue_script( "menu-ajax", $this->plugin_url . 'assets/js/menu-ajax.js', '', GETWEB_OPTION_VERSION, true );
