@@ -1,12 +1,7 @@
 <div class="container mrt50">
   <div class="panel panel-border">
     <div class="clearfix panel-custom-color">
-      <div id="of-popup-save" class="of-save-popup">
-        <div class="of-save-save"><i class="fa fa-check"></i></div>
-      </div>
-      <div id="of-popup-fail" class="of-save-popup">
-        <div class="of-save-fail"><i class="icon-remove"></i></div>
-      </div>
+	    <?php include 'message.php';?>
       <div class="panel-heading pull-left">Add New</div>
       <div class="panel-heading pull-right"><a href="admin.php?page=getweb_option_menus" class="btn btn-color">Back</a></div>
     </div>

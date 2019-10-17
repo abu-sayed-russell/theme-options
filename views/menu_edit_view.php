@@ -5,13 +5,7 @@ $menu_by_id = get_menu_by_id($edit_id)
 <div class="container mrt50">
     <div class="panel panel-border">
        <div class="clearfix panel-custom-color">
-         <div id="of-popup-save" class="of-save-popup">
-           <div class="of-save-save"><i class="fa fa-check"></i></div>
-         </div>
-         <div id="of-popup-fail" class="of-save-popup">
-           <div class="of-save-fail"><i class="icon-remove"></i> </div>
-         </div>
-
+	       <?php include 'message.php';?>
            <div class="panel-heading pull-left">Update <?php echo $menu_by_id['name'] ; ?> Menu</div>
          <div class="panel-heading pull-right">
            <a href="admin.php?page=getweb_option_menus" class="btn btn-color">Cancel</a>
