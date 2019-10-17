@@ -13,7 +13,10 @@ $menu_by_id = get_menu_by_id($edit_id)
          </div>
 
            <div class="panel-heading pull-left">Update <?php echo $menu_by_id['name'] ; ?> Menu</div>
-           <div class="panel-heading pull-right"><a href="admin.php?page=getweb_option_menus" class="btn btn-color">Back</a></div>
+         <div class="panel-heading pull-right">
+           <a href="admin.php?page=getweb_option_menus" class="btn btn-color">Cancel</a>
+           <a href="admin.php?page=getweb_new_menu" class="btn btn-color">Add New</a>
+         </div>
        </div>
         <div class="panel-body">
               <form id="frmeditgetweb" class="form-horizontal" action="#" method="post" data-url="<?php echo admin_url('admin-ajax.php'); ?>">

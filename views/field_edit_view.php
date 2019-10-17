@@ -15,7 +15,11 @@ $get_menus   = get_menus( 2, '' );
         <div class="of-save-fail"><i class="icon-remove"></i></div>
       </div>
       <div class="panel-heading pull-left">Update Data</div>
-      <div class="panel-heading pull-right"><a href="admin.php?page=getweb_option_fileds" class="btn btn-color">Back</a></div>
+      <div class="panel-heading pull-right">
+        <a href="admin.php?page=getweb_option_fileds" class="btn btn-color">Cancel</a>
+        <a href="admin.php?page=getweb_new_field" class="btn btn-color">Add New</a>
+      </div>
+
     </div>
     <div class="panel-body">
       <form id="frmeditgetwebfield" class="form-horizontal" action="#" method="post" data-url="<?php echo admin_url( 'admin-ajax.php' ); ?>">
