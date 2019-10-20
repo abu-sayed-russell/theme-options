@@ -11,7 +11,7 @@ $get_menus   = get_menus( 2, '' );
     <?php include 'message.php';?>
       <div class="panel-heading pull-left">Update Data</div>
       <div class="panel-heading pull-right">
-        <a href="admin.php?page=getweb_option_fileds" class="btn btn-color">Cancel</a>
+        <a href="admin.php?page=getweb_option_fields" class="btn btn-color">Cancel</a>
         <a href="admin.php?page=getweb_new_field" class="btn btn-color">Add New</a>
       </div>
 
