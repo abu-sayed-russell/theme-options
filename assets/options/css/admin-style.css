@@ -261,7 +261,7 @@ h3.demodata-heading:first-child {
 
 
 #of_container #of-nav > ul > li.current {
-  margin-left: -2px;
+  margin-left: 0px;
   border-left: 2px solid #0cafc5;
 }
 
@@ -311,7 +311,7 @@ h3.demodata-heading:first-child {
   border-top: 8px solid rgba(0, 0, 0, 0);
   border-bottom: 8px solid rgba(0, 0, 0, 0);
   position: absolute;
-  right: 0;
+  right: -1px;
 }
 
 #of_container #of-nav ul li a:hover {
