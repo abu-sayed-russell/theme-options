@@ -43,6 +43,14 @@
             </div>
           </div>
           <div class="form-group">
+            <label for="extra_class" class="col-sm-2">Icon</label>
+            <div class="col-sm-10">
+                <input type="text" class="icon-class-input" name="menu_icon" value="fa fa-th" />
+                <button type="button" class="picker-button">Pick an Icon</button>
+                <span class="menu-icon"></span>
+            </div>
+          </div>
+          <div class="form-group">
             <label for="extra_class" class="col-sm-2">Extra Class</label>
             <div class="col-sm-10">
               <input type="text" class="form-control input-sm" name="extra_class" id="extra_class" placeholder="Enter Extra Class">
@@ -56,3 +64,4 @@
     </div>
   </div>
 </div>
+<?php include 'icon_picker.php';?>

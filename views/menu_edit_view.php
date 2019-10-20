@@ -34,6 +34,14 @@ $menu_by_id = get_menu_by_id($edit_id)
                     </div>
                   </div>
                   <div class="form-group">
+                    <label for="extra_class" class="col-sm-2">Icon</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="icon-class-input" name="menu_icon" value="<?php echo $menu_by_id['icon'] ; ?>" />
+                      <button type="button" class="picker-button">Pick an Icon</button>
+                      <span class="menu-icon"></span>
+                    </div>
+                  </div>
+                  <div class="form-group">
                     <label for="extra_class" class="col-sm-2">Extra Class</label>
                     <div class="col-sm-10">
                       <input type="text" class="form-control input-sm" name="extra_class" id="extra_class" value="<?php echo $menu_by_id['extra_class'] ; ?>" placeholder="Enter Extra Class">
@@ -47,4 +55,4 @@ $menu_by_id = get_menu_by_id($edit_id)
         </div>
     </div>
 </div>
-
+<?php include 'icon_picker.php';?>

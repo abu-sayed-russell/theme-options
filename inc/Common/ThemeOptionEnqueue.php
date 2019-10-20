@@ -22,7 +22,7 @@ class ThemeOptionEnqueue extends BaseController {
 
 		if ( in_array( $currentPage, $page_includes ) ) {
 			//Style
-			wp_enqueue_style( "getweb-options-style", $this->plugin_url . 'assets/css/style.css', '', GETWEB_OPTION_VERSION );
+			wp_enqueue_style( "getweb-options-style", $this->plugin_url . 'assets/css/option-style.css', '', GETWEB_OPTION_VERSION );
 			wp_enqueue_style( "getweb-options-bootstrap-css", $this->plugin_url . 'assets/css/bootstrap.min.css', '', GETWEB_OPTION_VERSION );
 			wp_enqueue_style( "getweb-options-datatables-css", $this->plugin_url . 'assets/css/datatables.min.css', '', GETWEB_OPTION_VERSION );
 			//Jquery
@@ -34,6 +34,8 @@ class ThemeOptionEnqueue extends BaseController {
 			wp_enqueue_media();
 		}
 		if ( in_array( $currentPage, $menu_page ) ) {
+			wp_enqueue_style( "getweb-options-icon", $this->plugin_url . 'assets/css/icon.css', '', GETWEB_OPTION_VERSION );
+			wp_enqueue_style( "getweb-options-fonts", $this->plugin_url . 'assets/css/font-awesome.min.css', '', GETWEB_OPTION_VERSION );
 			wp_enqueue_script( "menu-ajax", $this->plugin_url . 'assets/js/menu-ajax.js', '', GETWEB_OPTION_VERSION, true );
 		}
 		if ( in_array( $currentPage, $field_page ) ) {
@@ -41,8 +43,8 @@ class ThemeOptionEnqueue extends BaseController {
 		}
 		if ( in_array( $currentPage, $option_page ) ) {
 			wp_enqueue_script( 'jquery' );
-			wp_register_style( 'pix-themeoptions', $this->plugin_url . 'assets/options/css/fonts.css', array(), '1.0', 'all' );
-			wp_enqueue_style( 'pix-themeoptions' );
+			wp_register_style( 'getweb-options-fonts', $this->plugin_url . 'assets/css/font-awesome.min.css', array(), '1.0', 'all' );
+			wp_enqueue_style( 'getweb-options-fonts' );
 			wp_enqueue_style( 'admin-style', $this->plugin_url . 'assets/options/css/admin-style.css' );
 			wp_enqueue_style( 'jquery-ui-custom-admin', $this->plugin_url . 'assets/options/css/jquery-ui-custom.css' );
 			if ( ! wp_style_is( 'wp-color-picker', 'registered' ) ) {

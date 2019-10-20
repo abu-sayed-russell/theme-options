@@ -193,145 +193,6 @@ jQuery(document).ready(function($){
 		return false; //Prevent the browser jump to the link anchor
 	});
 
-	// Update slide title upon typing
-	function update_slider_title(e) {
-		var element = e;
-		if ( this.timer ) {
-			clearTimeout( element.timer );
-		}
-		this.timer = setTimeout( function() {
-			$(element).parent().prev().find('strong').text( element.value );
-		}, 100);
-		return true;
-	}
-
-	$('.of-slider-title').live('keyup', function(){
-		update_slider_title(this);
-	});
-
-	//Remove individual font
-	$('.font_delete_button').live('click', function(){
-		var agree = confirm("Are you sure you wish to delete this slide?");
-		if (agree) {
-			var $trash = $(this).parents('li');
-			$trash.animate({
-				opacity: 0.25,
-				height: 0,
-			}, 500, function() {
-				$(this).remove();
-			});
-			return false; //Prevent the browser jump to the link anchor
-		} else {
-			return false;
-		}
-	});
-
-	//Add new font
-	$(".font_add_button").live('click', function(){
-		var fontsContainer = $(this).prev();
-		var sliderId = fontsContainer.attr('id');
-
-		var numArr = $('#'+sliderId +' li').find('.order').map(function() {
-			var str = this.id;
-			str = str.replace(/\D/g,'');
-			str = parseFloat(str);
-			return str;
-		}).get();
-
-		var maxNum = Math.max.apply(Math, numArr);
-		if (maxNum < 1 ) { maxNum = 0};
-		var newNum = maxNum + 1;
-
-		var newSlide = '<li class="temphide"><div class="slide_header"><strong>Slide ' + newNum + '</strong><input type="hidden" class="slide of-input order" name="custom_fonts[' + newNum + '][order]" id="' + sliderId + '_' + newNum + '_slide_order" value="' + newNum + '"><a class="slide_edit_button" href="#">Edit</a></div><div class="slide_body" style="display: block;"><label>Font Title</label><input class="slide of-input of-slider-title" name="' + sliderId + '[' + newNum + '][font_title]" id="' + sliderId + '_' + newNum + '_slide_title" value=""><h4>Font Formats</h4><label>WOFF</label><div class="upload_button_div media-wrap"><input class="upload slide of-input" name="' + sliderId + '[' + newNum + '][woff]" id="' + sliderId + '_' + newNum + '_slide_woff" value=""><span class="button media_upload_button" id="' + sliderId + '_' + newNum + '">Upload</span><span class="button remove-image hide" id="reset_' + sliderId + '_' + newNum + '" title="' + sliderId + '_' + newNum + '">Remove</span></div><div class="desc">Recommended, works in all modern browsers</div><label>TTF</label><div class="upload_button_div media-wrap"><input class="upload slide of-input" name="' + sliderId + '[' + newNum + '][ttf]" id="' + sliderId + '_' + newNum + '_slide_ttf" value=""><span class="button media_upload_button" id="' + sliderId + '_' + newNum + '">Upload</span><span class="button remove-image hide" id="reset_' + sliderId + '_' + newNum + '" title="' + sliderId + '_' + newNum + '">Remove</span></div><div class="desc">Not Recommended, but required by older of works webkit browsers (like chrome)</div><label>EOT</label><div class="upload_button_div media-wrap"><input class="upload slide of-input" name="' + sliderId + '[' + newNum + '][eot]" id="' + sliderId + '_' + newNum + '_slide_eot" value=""><span class="button media_upload_button" id="' + sliderId + '_' + newNum + '">Upload</span><span class="button remove-image hide" id="reset_' + sliderId + '_' + newNum + '" title="' + sliderId + '_' + newNum + '">Remove</span></div><div class="desc">Only necessary for IE older than IE9</div><label>SVG</label><div class="upload_button_div media-wrap"><input class="upload slide of-input" name="' + sliderId + '[' + newNum + '][svg]" id="' + sliderId + '_' + newNum + '_slide_svg" value=""><span class="button media_upload_button" id="' + sliderId + '_' + newNum + '">Upload</span><span class="button remove-image hide" id="reset_' + sliderId + '_' + newNum + '" title="' + sliderId + '_' + newNum + '">Remove</span></div><div class="desc">No longer supported or required for any browser. But required for Legacy iOS</div><a class="slide_delete_button" href="#">Delete</a><div class="clear"></div></div></li>';
-
-		fontsContainer.append(newSlide);
-		var nSlide = fontsContainer.find('.temphide');
-		nSlide.fadeIn('fast', function() {
-			$(this).removeClass('temphide');
-		});
-
-		optionsframework_file_bindings(); // re-initialise upload image..
-
-		return false; //prevent jumps, as always..
-	});
-
-	//Remove individual slide
-	$('.slide_delete_button').live('click', function(){
-		var agree = confirm("Are you sure you wish to delete this slide?");
-		if (agree) {
-			var $trash = $(this).parents('li');
-			$trash.animate({
-				opacity: 0.25,
-				height: 0,
-			}, 500, function() {
-				$(this).remove();
-			});
-			return false; //Prevent the browser jump to the link anchor
-		} else {
-			return false;
-		}
-	});
-
-	//Add new slide
-	$(".slide_add_button").live('click', function(){
-		var slidesContainer = $(this).prev();
-		var sliderId = slidesContainer.attr('id');
-
-		var numArr = $('#'+sliderId +' li').find('.order').map(function() {
-			var str = this.id;
-			str = str.replace(/\D/g,'');
-			str = parseFloat(str);
-			return str;
-		}).get();
-
-		var maxNum = Math.max.apply(Math, numArr);
-		if (maxNum < 1 ) { maxNum = 0};
-		var newNum = maxNum + 1;
-
-		var newSlide = '<li class="temphide"><div class="slide_header"><strong>Slide ' + newNum + '</strong><input type="hidden" class="slide of-input order" name="' + sliderId + '[' + newNum + '][order]" id="' + sliderId + '_slide_order-' + newNum + '" value="' + newNum + '"><a class="slide_edit_button" href="#">Edit</a></div><div class="slide_body" style="display: none; "><label>Title</label><input class="slide of-input of-slider-title" name="' + sliderId + '[' + newNum + '][title]" id="' + sliderId + '_' + newNum + '_slide_title" value=""><label>Image URL</label><div class="upload_button_div media-wrap"><input class="upload slide of-input" name="' + sliderId + '[' + newNum + '][url]" id="' + sliderId + '_' + newNum + '_slide_url" value=""><span class="button media_upload_button" id="' + sliderId + '_' + newNum + '">Upload</span><span class="button remove-image hide" id="reset_' + sliderId + '_' + newNum + '" title="' + sliderId + '_' + newNum + '">Remove</span></div><div class="screenshot"></div><label>Link URL (optional)</label><input class="slide of-input" name="' + sliderId + '[' + newNum + '][link]" id="' + sliderId + '_' + newNum + '_slide_link" value=""><label>Description (optional)</label><textarea class="slide of-input" name="' + sliderId + '[' + newNum + '][description]" id="' + sliderId + '_' + newNum + '_slide_description" cols="8" rows="8"></textarea><a class="slide_delete_button" href="#">Delete</a><div class="clear"></div></div></li>';
-
-		slidesContainer.append(newSlide);
-		var nSlide = slidesContainer.find('.temphide');
-		nSlide.fadeIn('fast', function() {
-			$(this).removeClass('temphide');
-		});
-
-		optionsframework_file_bindings(); // re-initialise upload image..
-
-		return false; //prevent jumps, as always..
-	});
-
-	//Sort slides
-	jQuery('.slider').find('ul').each( function() {
-		var id = jQuery(this).attr('id');
-		$('#'+ id).sortable({
-			placeholder: "placeholder",
-			opacity: 0.6,
-			handle: ".slide_header",
-			cancel: "a"
-		});
-	});
-
-
-	/**	Sorter (Layout Manager) */
-	jQuery('.sorter').each( function() {
-		var id = jQuery(this).attr('id');
-		$('#'+ id).find('ul').sortable({
-			items: 'li',
-			placeholder: "placeholder",
-			connectWith: '.sortlist_' + id,
-			opacity: 0.6,
-			update: function() {
-				$(this).find('.position').each( function() {
-					var listID = $(this).parent().attr('id');
-					var parentID = $(this).parent().parent().attr('id');
-					parentID = parentID.replace(id + '_', '')
-					var optionID = $(this).parent().parent().parent().attr('id');
-					$(this).prop("name", optionID + '[' + parentID + '][' + listID + ']');
-				});
-			}
-		});
-	});
 
 	/**	Tipsy @since v1.3 */
 	if (jQuery().tipsy) {
@@ -343,63 +204,6 @@ jQuery(document).ready(function($){
 	}
 
 
-	/**
-	 * JQuery UI Slider function
-	 * Dependencies 	 : jquery, jquery-ui-slider
-	 * Feature added by : Smartik - http://smartik.ws/
-	 * Date 			 : 03.17.2013
-	 */
-	jQuery('.gtof_sliderui').each(function() {
-
-		var obj   = jQuery(this);
-		var sId   = "#" + obj.data('id');
-		var val   = parseInt(obj.data('val'));
-		var min   = parseInt(obj.data('min'));
-		var max   = parseInt(obj.data('max'));
-		var step  = parseInt(obj.data('step'));
-
-		//slider init
-		obj.slider({
-			value: val,
-			min: min,
-			max: max,
-			step: step,
-			range: "min",
-			slide: function( event, ui ) {
-				jQuery(sId).val( ui.value );
-			}
-		});
-
-	});
-
-
-	/**
-	 * Switch
-	 * Dependencies 	 : jquery
-	 * Feature added by : Smartik - http://smartik.ws/
-	 * Date 			 : 03.17.2013
-	 */
-	jQuery(".switch-options label").click(function(){
-		var $switchVal = $(this).data('id'),
-			$hiddenInput = $(this).parent('.switch-options').find('.pix-switch-value');
-		$(this).addClass('selected').siblings('label').removeClass('selected');
-		$hiddenInput.val($switchVal);
-
-		//fold/unfold related options
-		if ( $hiddenInput.hasClass('fld-switch') ) {
-
-			var $fold = $('.f_'+ $hiddenInput.data('id'));
-			$.each($fold, function( index, value ) {
-				if( $(value).hasClass($switchVal) ){
-					$(value).slideDown('normal', "swing");
-				}else {
-					$(value).slideUp('normal', "swing");
-				}
-			});
-
-		}
-
-	});
 	//disable text select(for modern chrome, safari and firefox is done via CSS)
 	if (($.browser.msie && $.browser.version < 10) || $.browser.opera) {
 		$('.cb-enable span').find().attr('unselectable', 'on');
@@ -411,30 +215,22 @@ jQuery(document).ready(function($){
 	 * Feature added by : Smartik - http://smartik.ws/
 	 * Date 			 : 05.28.2013
 	 */
-	function optionsframework_add_file(event, selector) {
+	function getweb_options_add_file(event, selector) {
 
 		var upload = $(".uploaded-file"), frame;
 		var $el = $(this),
 			fileType = $el.data('file-type');
 
 		event.preventDefault();
-
-		// If the media frame already exists, reopen it.
 		if ( frame ) {
 			frame.open();
 			return;
 		}
 
 		var args = {
-			// Set the title of the modal.
 			title: $el.data('choose'),
-
-			// Customize the submit button.
 			button: {
-				// Set the text of the button.
 				text: $el.data('update'),
-				// Tell the button not to close the modal, since we're
-				// going to refresh the page when the image is selected.
 				close: false
 			}
 		};
@@ -445,12 +241,9 @@ jQuery(document).ready(function($){
 			}
 		}
 
-		// Create the media frame.
 		frame = wp.media(args);
 
-		// When an image is selected, run a callback.
 		frame.on( 'select', function() {
-			// Grab the selected attachment.
 			var attachment = frame.state().get('selection').first();
 			frame.close();
 			selector.find('.upload').val(attachment.attributes.url);
@@ -460,117 +253,35 @@ jQuery(document).ready(function($){
 			selector.find('.media_upload_button').unbind();
 			selector.find('.remove-image').removeClass('hide');//show "Remove" button
 			selector.find('.of-background-properties').slideDown();
-			optionsframework_file_bindings();
+			getweb_options_file_bindings();
 		});
 
-		// Finally, open the modal.
 		frame.open();
 	}
 
-	function optionsframework_remove_file(selector) {
-		selector.find('.remove-image').addClass('hide');//hide "Remove" button
+	function getweb_options_remove_file(selector) {
+		selector.find('.remove-image').addClass('hide');
 		selector.find('.upload').val('');
 		selector.find('.of-background-properties').hide();
 		selector.find('.screenshot').slideUp();
 		selector.find('.remove-file').unbind();
-		// We don't display the upload button if .upload-notice is present
-		// This means the user doesn't have the WordPress 3.5 Media Library Support
 		if ( $('.section-upload .upload-notice').length > 0 ) {
 			$('.media_upload_button').remove();
 		}
-		optionsframework_file_bindings();
+		getweb_options_file_bindings();
 	}
 
-	function optionsframework_file_bindings() {
+	function getweb_options_file_bindings() {
 		$('.remove-image, .remove-file').on('click', function() {
-			optionsframework_remove_file( $(this).parents('.section-upload, .section-media, .media-wrap') );
+			getweb_options_remove_file( $(this).parents('.section-upload, .section-media, .media-wrap') );
 		});
 
 		$('.media_upload_button').unbind('click').click( function( event ) {
-			optionsframework_add_file(event, $(this).parents('.section-upload, .section-media, .media-wrap'));
+			getweb_options_add_file(event, $(this).parents('.section-upload, .section-media, .media-wrap'));
 		});
 	}
 
-	optionsframework_file_bindings();
+	getweb_options_file_bindings();
 
-	/* one click demo install */
-	$('.demo_import').on('click', function(e){
-		var nonce = $(this).data('nonce'),
-			$el = $(this),
-			demoXml = $el.data('file'),
-			$par = $el.parent('.pix-demo-button'),
-			$con = $par.parent('.of-info'),
-			$spinner = $par.next('.spinner'),
-			$msg = $spinner.next('.import-messages');
-		$.ajax({
-			type: 'post',
-			url: ajaxurl,
-			data: {
-				action: 'pix_import_demo',
-				file: demoXml,
-				security: nonce
-			},
-			beforeSend: function()
-			{
-				//Show loader
-				$par.addClass('disabled');
-				$spinner.removeClass('hidden');
-				$msg.find('.info').show('400').siblings('span').hide();
-				$el.html('<i class="icon-refresh"></i> Importing...');
-			},
-		})
-			.done(function(response) {
-				$par.removeClass('disabled');
-				var alertMsg = response.replace( "pix_demo_import", '' );
-				if(response.match('pix_demo_import')){
-					$msg.find('.success').show('400').siblings('span').hide();
-					$el.html('Import Success!');
-					$con.css({
-						background: '#d5efa8',
-						borderColor: '#bce580',
-						color: '#6a7f2f'
-					});
-				}else{
-					$par.addClass('disabled');
-
-					$con.css({
-						background: '#fde9ea',
-						borderColor: '#eaacb2',
-						color: '#c46a77'
-					});
-					$msg.find('.import-error').show('400').siblings('span').hide();
-					$el.html('<i class="icon-remove"></i> Import Failed :(');
-				}
-			})
-			.fail(function() {
-				$par.addClass('disabled');
-				$el.addClass('import-failed');
-				$con.css({
-					background: '#fde9ea',
-					borderColor: '#eaacb2',
-					color: '#c46a77'
-				});
-				$msg.find('.import-error').show('400').siblings('span').hide();
-				$el.html('<i class="icon-remove"></i> Import Failed :(');
-			})
-			.always(function() {
-				//remove loader
-				//fade out sucess message after 10 sec.
-				$spinner.addClass('hidden');
-				setTimeout(function(){
-					$msg.find('span.msg').hide();
-					$con.css({
-						background: '#EFF9FF',
-						borderColor: '#D6F0FF',
-						color: '#eaacb2'
-					});
-					$el.text('Import Demo');
-				},20000);
-			});
-
-		e.preventDefault();
-	});
-
-
-}); //end doc ready
+});
 

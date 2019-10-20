@@ -17,6 +17,7 @@
         <tr>
           <th>ID</th>
           <th>Name</th>
+          <th>Icon</th>
           <th>Parent</th>
           <th>Status</th>
           <th>Create Time</th>
@@ -30,6 +31,7 @@
               <tr data-del="<?php echo $row->id; ?>">
                 <td><?php echo $i ++; ?></td>
                 <td><?php echo $row->name; ?></td>
+                <td><i class="<?php echo $row->icon; ?>"></i></td>
                 <td>
                 <?php
                 if ( $row->parent == 0 ) {
