@@ -14,6 +14,8 @@ jQuery(function () {
           $('#select_options').fadeIn();
         }else if ( $(this).val() === 'radio' ) {
           $('#select_options').fadeIn();
+        }else if ( $(this).val() === 'switch' ) {
+          $('#select_options').fadeIn();
         }else if ( $(this).val() === 'multicheck' ) {
           $('#select_options').fadeIn();
         }else if ( $(this).val() === 'custom_taxonomy' ) {

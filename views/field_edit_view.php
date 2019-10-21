@@ -77,12 +77,13 @@ $get_menus   = get_menus( 2, '' );
                       <option value="slider" <?php if ( $field_by_id['type'] === "slider" ): ?> selected<?php endif ?>>Slider</option>
                       <option value="upload" <?php if ( $field_by_id['type'] === "upload" ): ?> selected<?php endif ?>>upload</option>
                       <option value="media" <?php if ( $field_by_id['type'] === "media" ): ?> selected<?php endif ?>>Media</option>
+                      <option value="switch" <?php if ( $field_by_id['type'] === "switch" ): ?> selected<?php endif ?>>Switch</option>
                     </select>
                     <span class="nb_noted">Please select at least one type!</span>
                     <small class="text-danger form-control-msg">Please select at least one type!</small>
                   </div>
                 </div>
-				  <?php if ( isset( $field_by_id['more_values'] ) && ! empty( $field_by_id['more_values'] ) && $field_by_id['more_values'] != 'null' && $field_by_id['type'] == 'select' || $field_by_id['type'] == 'multi_select' || $field_by_id['type'] == 'radio' || $field_by_id['type'] == 'multicheck' ): ?>
+				  <?php if ( isset( $field_by_id['more_values'] ) && ! empty( $field_by_id['more_values'] ) && $field_by_id['more_values'] != 'null' && $field_by_id['type'] == 'select' || $field_by_id['type'] == 'multi_select' || $field_by_id['type'] == 'radio' || $field_by_id['type'] == 'multicheck' || $field_by_id['type'] == 'switch'): ?>
                     <div class="form-group" id="select_options">
                       <label for="field_type" class="col-sm-2"></label>
                       <div class="col-sm-10">

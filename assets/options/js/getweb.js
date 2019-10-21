@@ -282,6 +282,23 @@ jQuery(document).ready(function($){
 	}
 
 	getweb_options_file_bindings();
+	/**
+	 * Switch
+	 * Dependencies 	 : jquery
+	 * Feature added by : Smartik - http://smartik.ws/
+	 * Date 			 : 03.17.2013
+	 */
+	jQuery(".switch-options label").click(function(){
+		var $switchVal = $(this).data('id'),
+			$hiddenInput = $(this).parent('.switch-options').find('.pix-switch-value');
+		$(this).addClass('selected').siblings('label').removeClass('selected');
+		$hiddenInput.val($switchVal);
 
+
+	});
+	//disable text select(for modern chrome, safari and firefox is done via CSS)
+	if (($.browser.msie && $.browser.version < 10) || $.browser.opera) {
+		$('.cb-enable span').find().attr('unselectable', 'on');
+	}
 });
 
