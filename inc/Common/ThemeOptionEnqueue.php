@@ -12,7 +12,7 @@ class ThemeOptionEnqueue extends BaseController {
 		add_action( 'admin_enqueue_scripts', array( $this, 'theme_enqueue' ) );
 	}
 
-	function theme_enqueue() {
+	function theme_enqueue ( ) {
 		$slug          = "";
 		$page_includes = array( "getweb_option_menus", "getweb_new_menu", "getweb_edit_menu", "getweb_new_field", "getweb_option_fields", "getweb_edit_field" );
 		$option_page   = array( "getweb_theme_options" );
