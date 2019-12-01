@@ -18,7 +18,7 @@ class ThemeOptionEnqueue extends BaseController {
 		$option_page   = array( "getweb_theme_options" );
 		$menu_page     = array( "getweb_option_menus", "getweb_new_menu", "getweb_edit_menu" );
 		$field_page    = array( "getweb_new_field", "getweb_option_fields", "getweb_edit_field" );
-		$currentPage   = $_GET['page'];
+		$currentPage   = isset($_GET['page']) ? $_GET['page'] : '';
 
 		if ( in_array( $currentPage, $page_includes ) ) {
 			//Style
